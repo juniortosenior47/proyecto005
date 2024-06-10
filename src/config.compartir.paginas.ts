@@ -1,5 +1,6 @@
 const FederationPlugin = require("next-federation-plugin");
 
+
 module.exports = {
   webpack(config, options) {
     config.plugins.push(
