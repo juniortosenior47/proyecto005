@@ -72,3 +72,27 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 Nest is [MIT licensed](LICENSE).
 # proyecto005
+
+# Configuración de Next.js y Module Federation para el intercambio de componentes
+
+Una configuración adecuada es esencial para establecer la comunicación entre microfrontends con Next.js y Module Federation. Esta configuración se realiza en el archivo next.config.js, el cual sobrescribe la configuración por defecto de webpack en Next.js e integra el plugin Next.Federation, encargado de gestionar la comunicación entre los remotos.
+
+En el archivo next.config.js, se deben definir aspectos como el nombre, el archivo de entrada o File Name y el path del remoto desde el que se consumen los componentes. Además, se especifican los componentes que queremos exponer en el remoto actual mediante la propiedad exposes.
+
+Esta configuración inicial hace posible que un remoto pueda consumir e importar componentes del otro remoto, manteniendo así el enfoque modular y la reusabilidad de los componentes.
+
+# Importación de componentes entre remotos
+
+Una vez configurados los remotos mediante next.config.js, se pueden importar componentes desde un remoto hacia el otro utilizando la función dynamic de Next.js. Esta función permite realizar importaciones dinámicas en el lado del cliente, lo que resulta en la carga de componentes de manera optimizada y bajo demanda.
+
+De esta manera, el componente ButtonFromRemote2 se consume e importa directamente desde el remoto 2 al remoto 1, evitando duplicaciones de código y garantizando la optimización en el uso de recursos.
+
+# Compartir páginas completas entre remotos
+
+Además de compartir componentes, Next.js y Module Federation también permiten compartir páginas completas entre remotos. Esta opción se implementa mediante la propiedad exposePages del plugin Next.Federation, la cual, al ser un valor booleano, habilita automáticamente el acceso a todas las páginas presentes en el proyecto Next.js en cuestión.
+
+Con esta configuración, cualquier microfrontend puede consumir e importar una página completa del remoto configurado, maximizando la reutilización de recursos y la arquitectura modular.
+
+# Información viene del siguiete enlace
+
+https://soloprogramadores.com/microfrontends-con-next-js-y-module-federation-hacia-el-futuro-del-frontend/
